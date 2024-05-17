@@ -1,4 +1,7 @@
-import './categories.styles.scss';
+import Directory from './components/directory/directory.component';
+
+
+
 
 const App = () => {
 
@@ -6,42 +9,32 @@ const App = () => {
     {
       id: 1,
       title: 'Accessories',
-      image: 'https://5.imimg.com/data5/SELLER/Default/2021/4/US/FX/DC/119904249/electronic-gadgets-500x500.jpg',
+      imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2021/4/US/FX/DC/119904249/electronic-gadgets-500x500.jpg',
     },
     {
       id: 2,
-      title: 'Bags',
-      image: 'https://cyberguy.com/wp-content/uploads/2023/10/CGO-10-best-laptop-bags.jpg',
+      title: 'Cameras',
+      imageUrl: 'https://images.pexels.com/photos/3497126/pexels-photo-3497126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     },
     {
       id: 3,
       title: 'Monitors',
-      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      imageUrl: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     },
     {
       id: 4,
       title: 'Laptops',
-      image: 'https://cdn.thewirecutter.com/wp-content/media/2022/10/laptopstopicpage-2048px-2102-3x2-1.jpg?auto=webp&quality=75&crop=3:2&width=1024',
+      imageUrl: 'https://cdn.thewirecutter.com/wp-content/media/2022/10/laptopstopicpage-2048px-2102-3x2-1.jpg?auto=webp&quality=75&crop=3:2&width=1024',
     },
     {
       id: 5,
       title: 'Phones',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-QoWQUGvTHv2S150JNC9Ml5cf6EYfFWA-NXj1q1Gszw&s',
+      imageUrl: 'https://i.pinimg.com/564x/1e/c9/9c/1ec99c1719180c0db1e6a7628285066a.jpg',
     },
   ]
 
   return ( 
-  <div className="categories-container">
-    {categories.map(({title, id}) =>  (
-    <div key={id} className="category-container">
-    <div className="background-image"/>
-  <div className="category-body-container">
-    <h2>{title}</h2>
-    <p>Shop Now</p>
-  </div>
-  </div>
-))}
- </div>
+  <Directory categories={categories}/>
   );
 };
 

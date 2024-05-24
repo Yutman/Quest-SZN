@@ -25,15 +25,16 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 
-const provider = new GoogleAuthProvider(); // Google authentication provider is essentially a class that we get from firebase authentication
+const googleProvider = new GoogleAuthProvider(); // Google authentication provider is essentially a class that we get from firebase authentication
 
 
-provider.setCustomParameters({ 
+googleProvider.setCustomParameters({ 
         prompt: 'select_account' 
 }); // always trigger the google popup whenever we use the google auth provider for authentication and sign in
 
 export const auth = getAuth();
-export const signInwithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore(firebaseApp); // This is the database instance that we will use to interact with the firestore database
 

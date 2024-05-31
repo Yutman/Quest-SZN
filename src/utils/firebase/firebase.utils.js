@@ -4,7 +4,8 @@ import {
     signInWithRedirect, 
     signInWithPopup, 
     GoogleAuthProvider,
-    createUserWithEmailAndPassword, 
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword 
 } from 'firebase/auth';
 
 import {
@@ -64,11 +65,11 @@ export const createUserDocumentFromAuth = async (
       } catch (error) {
         console.log('Error creating user', error.message);
       }
-    }
+    } // if user data does not exist in the database, create a new user document
+    // if user data exists in the database, return the user document
 
     return userDocRef;
-    // if user data does not exist in the database, create a new user document
-    // if user data exists in the database, return the user document
+    
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -78,5 +79,14 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 //Create a new user with the provided email and password
   return await createUserWithEmailAndPassword(auth, email, password);
-}
+};
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {  
+  if (!email || !password) 
+      return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
+};
+
+
 

@@ -5,9 +5,15 @@ import { ReactComponent as QuestLogo} from '../../assets/quest.svg'
 import './navigation.styles.scss';
 import { UserContext } from '../../contexts/user.context';
 
+import {signOutUser} from '../../utils/firebase/firebase.utils';
+
 const Navigation = () => {
-  const {currentUser} = useContext(UserContext);
-  console.log(currentUser);
+  const {currentUser, setCurrentUser } = useContext(UserContext);
+  
+  const signOutHandler =  async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
   
   return (
     <Fragment>
@@ -17,11 +23,16 @@ const Navigation = () => {
         </Link>
       <div className='nav-links-container'>
         <Link className='nav-link' to='/shop'>
-            Shop
+            SHOP
         </Link>
-        <Link className='nav-link' to='/auth'>
-            Sign In
+        { currentUser ? (
+            <span className='nav-link' onClick={signOutHandler}>
+              SIGN OUT</span>
+          ) : ( 
+          <Link className='nav-link' to='/auth'>
+            SIGN IN
         </Link>
+          )} 
       </div>
     </div>
     <Outlet />

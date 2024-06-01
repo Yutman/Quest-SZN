@@ -1,11 +1,14 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import {Outlet, Link } from 'react-router-dom';
 
 import { ReactComponent as QuestLogo} from '../../assets/quest.svg'
 import './navigation.styles.scss';
-
+import { UserContext } from '../../contexts/user.context';
 
 const Navigation = () => {
+  const {currentUser} = useContext(UserContext);
+  console.log(currentUser);
+  
   return (
     <Fragment>
     <div className='navigation'>

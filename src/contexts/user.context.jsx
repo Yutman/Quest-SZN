@@ -5,6 +5,7 @@ import {
 } from "react";  
 
 import { 
+    createUserDocumentFromAuth,
     onAuthStateChangedListener, 
    } from "../utils/firebase/firebase.utils";
 
@@ -21,7 +22,10 @@ const value = {currentUser, setCurrentUser};
 
 useEffect(() => {  
     const unsubscribe = onAuthStateChangedListener((user) => {
-        console.log(user);
+        if (user){
+            createUserDocumentFromAuth(user);
+        }
+        setCurrentUser(user);
     })
     return unsubscribe;
 }, []); // useEffect hook to run once when the component mounts

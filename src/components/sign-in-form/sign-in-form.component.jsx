@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import FormInput from '../form-input/form-input.component';
 
 import { 
@@ -21,22 +21,20 @@ const SignInForm = () => {
     const[formFields, setFormFields] = useState(defaultFormFields);
     const {email, password } = formFields; // destructure form fields
 
-    const {setCurrentUser} = useContext(UserContext);
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
 
      const signInWithGoogle = async () => {
-        const {user} = await signInWithGooglePopup();
-        createUserDocumentFromAuth(user);
+        await signInWithGooglePopup();
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault(); // prevent the default form submission
        
         try {
-            const {user} = await signInAuthUserWithEmailAndPassword(
+            await signInAuthUserWithEmailAndPassword(
                 email, 
                 password
             );

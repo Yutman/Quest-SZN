@@ -32,7 +32,6 @@ const SignInForm = () => {
         createUserDocumentFromAuth(user);
     };
 
-
     const handleSubmit = async (event) => {
         event.preventDefault(); // prevent the default form submission
        
@@ -42,8 +41,7 @@ const SignInForm = () => {
                 password
             );
         resetFormFields();
-     
-          
+      
         } catch (error) {
             switch (error.code) {
                 case 'auth/wrong-password': 

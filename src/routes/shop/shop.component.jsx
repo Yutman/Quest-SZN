@@ -16,7 +16,7 @@ const Shop = ( ) => {
                 <ProductCard key={product.id} product={product}/>
             ))}
         </div>
-    )
-}
+    );
+};
 
 export default Shop;

@@ -20,7 +20,24 @@ const addCartItem = (cartItems, productToAdd) => {
     }
     //return new array with modified cartItems
     return [...cartItems, {...productToAdd, quantity: 1}];
-}
+};
+
+const removeCartItem = (cartItems, cartItemToRemove) => {
+    const existingCartItem = cartItems.find(
+        (cartItem) => cartItem.id === cartItemToRemove.id
+    ); // I'm finding the productToRemove in the cartItems array and storing it in the existingCartItem variable.
+
+    if (existingCartItem.quantity === 1) {
+        return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
+    } // If the quantity of the existingCartItem is 1, I'm returning a new array with the cartItem removed from the cartItems array.
+
+    return cartItems.map((cartItem) => 
+        cartItem.id === cartItemToRemove.id
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
+}; // If the quantity of the existingCartItem is greater than 1, I'm returning a new array with the quantity of the cartItem decremented by 1.
+
 
 export const CartContext = createContext({
     isCartOpen: false,
@@ -28,6 +45,7 @@ export const CartContext = createContext({
     cartItems: [],
     addItemToCart: () => {},
     cartCount: 0,
+    removeItemFromCart: () => {},
 }); 
 
 
@@ -36,9 +54,14 @@ export const CartContext = createContext({
         const[cartItems, setCartItems] = useState([]);
         const [cartCount, setCartCount] = useState(0);
 
-        const addItemToCart = (product) => {
-            setCartItems(addCartItem(cartItems, product));
+        const addItemToCart = (productToAdd) => {
+            setCartItems(addCartItem(cartItems, productToAdd));
     }; // I'm calling the addCartItem function and passing in the current cartItems and the productToAdd. The addCartItem function will return a new array with the updated cartItems, and I'm setting that new array as the new cartItems state.
+        
+    
+    const removeItemFromCart = (productToRemove) => {
+        setCartItems(removeCartItem(cartItems, productToRemove));
+    };//I'm calling the removeCartItem function and passing in the current cartItems and the productToRemove. The removeCartItem function will return a new array with the updated cartItems, and I'm setting that new array as the new cartItems state.    
 
         useEffect(() => {
         const newCartCount = cartItems.reduce(
@@ -51,6 +74,7 @@ export const CartContext = createContext({
         isCartOpen, 
         setIsCartOpen, 
         addItemToCart, 
+        removeItemFromCart,
         cartItems,
         cartCount,
     };

@@ -59,8 +59,8 @@ export const CartContext = createContext({
     }; // I'm calling the addCartItem function and passing in the current cartItems and the productToAdd. The addCartItem function will return a new array with the updated cartItems, and I'm setting that new array as the new cartItems state.
         
     
-    const removeItemFromCart = (productToRemove) => {
-        setCartItems(removeCartItem(cartItems, productToRemove));
+    const removeItemFromCart = (cartItemToToRemove) => {
+        setCartItems(removeCartItem(cartItems, cartItemToToRemove));
     };//I'm calling the removeCartItem function and passing in the current cartItems and the productToRemove. The removeCartItem function will return a new array with the updated cartItems, and I'm setting that new array as the new cartItems state.    
 
         useEffect(() => {

@@ -8,7 +8,7 @@ import './checkout.styles.scss';
 
 
 const Checkout = () => {
-    const {cartItems, addItemToCart, removeItemFromCart} = 
+    const {cartItems} = 
     useContext(CartContext);
 
     const total = cartItems.reduce((acc, cartItem) => acc + cartItem.quantity * cartItem.price, 0);

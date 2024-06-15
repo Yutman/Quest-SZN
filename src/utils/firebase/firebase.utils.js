@@ -7,14 +7,17 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+
 } from 'firebase/auth';
 
 import {
   getFirestore,
   doc,
   getDoc,
-  setDoc
+  setDoc,
+  collection, 
+  writeBatch
 } from 'firebase/firestore'; // 'doc' is needed to get a document instance.'getDoc' is needed to get a snapshot of the document instance. 'setDoc' is needed to set a document instance.
 
 
@@ -41,6 +44,24 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore(firebaseApp); // This is the database instance that we will use to interact with the firestore database
+
+export const addCollectionAndDocuments = async (
+      collectionKey, 
+      objectsToAdd
+    ) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+   await batch.commit();
+   console.log('done');
+}
+// designed to add multiple documents to a collection in the firestore database
+
 
 export const createUserDocumentFromAuth = async (
   userAuth, 

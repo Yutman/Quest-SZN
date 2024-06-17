@@ -7,28 +7,30 @@ import {
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils.js";
 
 
-export const ProductsContext = createContext({
-    products: [],
+export const CategoriesContext = createContext({
+    categoriesMap: {},
 }); // create a user context object
 
 
-export const ProductsProvider = ({children}) => {
-    const [products, setProducts] = useState([]); 
-    const value = {products};
+export const CategoriesProvider = ({children}) => {
+    const [categoriesMaps, setCategoriesMap] = useState({}); 
+    const value = {categoriesMaps};
 
+    
     useEffect(() => {
         const getCategoriesMap = async () =>  {
         const categoryMap = await getCategoriesAndDocuments();
         console.log(categoryMap);
+        setCategoriesMap(categoryMap);
     }
     getCategoriesMap();
 }, []);
 
 
 return ( 
-        <ProductsContext.Provider value={value}>
+        <CategoriesContext.Provider value={value}>
             {children}
-        </ProductsContext.Provider>
+        </CategoriesContext.Provider>
         );
 }; // create a user provider component that will wrap the entire application and provide the user context object to all components in the application
 

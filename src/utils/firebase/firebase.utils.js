@@ -17,7 +17,9 @@ import {
   getDoc,
   setDoc,
   collection, 
-  writeBatch
+  writeBatch,
+  query, 
+  getDocs,
 } from 'firebase/firestore'; // 'doc' is needed to get a document instance.'getDoc' is needed to get a snapshot of the document instance. 'setDoc' is needed to set a document instance.
 
 
@@ -33,7 +35,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider(); // Google authentication provider is essentially a class that we get from firebase authentication
-
 
 googleProvider.setCustomParameters({ 
         prompt: 'select_account' 
@@ -61,6 +62,20 @@ export const addCollectionAndDocuments = async (
    console.log('done');
 }
 // designed to add multiple documents to a collection in the firestore database
+
+
+export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef); //simple query that fetches all documents in the collection without any filters or sorting.
+
+    const querySnapshot = await getDocs(q); //getDocs is the asynchronous ability to fetch those document snapshots from the collection reference
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+        const {title, items} = docSnapshot.data();
+        acc[title.toLowerCase()] = items;
+        return acc;
+    }, {});
+    return categoryMap;
+}
 
 
 export const createUserDocumentFromAuth = async (

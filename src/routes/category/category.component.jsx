@@ -20,9 +20,9 @@ const Category = () => {
     <Fragment>
       <h2 className='category-title'>{category.toUpperCase()}</h2>
       <div className='category-container'>
-        {products &&
+        {products && // if products is undefined, it will not render the ProductCard components.
           products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} /> // If products exist, it maps over the array and renders a ProductCard for each product, passing the product details as props.
           ))}
       </div>
     </Fragment>
@@ -30,3 +30,4 @@ const Category = () => {
 };
 
 export default Category;
+// The component ensures that it always displays the correct products by updating the state whenever the URL parameter or categories map changes.

@@ -4,7 +4,9 @@ import {CartContext} from '../../contexts/cart.context';
 
 import CheckOutItem from '../../components/checkout-item/checkout-item.component';
 
-import './checkout.styles.scss';
+import {CheckoutContainer, CheckoutHeader, HeaderBlock} from './checkout.styles.jsx';
+
+import './checkout.styles.jsx';
 
 
 const Checkout = () => {
@@ -14,29 +16,29 @@ const Checkout = () => {
     const total = cartItems.reduce((acc, cartItem) => acc + cartItem.quantity * cartItem.price, 0);
 
     return(
-        <div className='checkout-container'>
-            <div className='checkout-header'> 
-                <div className='header-block'>
+        <CheckoutContainer>
+            <CheckoutHeader> 
+                <HeaderBlock>
                     <span>Product</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Description</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Quantity</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Price</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Remove</span>
-                </div>
-            </div>
+                </HeaderBlock>
+            </CheckoutHeader>
                 {cartItems.map((cartItem) => (
                     <CheckOutItem key={cartItem.id} cartItem={cartItem} />
                 ))}
                 <span className='total'>Total: Ksh.{total}.00</span>
-            </div>
+            </CheckoutContainer>
     );
 };
 

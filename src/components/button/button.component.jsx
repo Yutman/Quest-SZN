@@ -1,39 +1,27 @@
-import {
-    BaseButton, 
-    GoogleSignInButton, 
-    InvertedButton} from './button.styles';
-
+// button.component.jsx
+import { BaseButton, GoogleSignInButton, InvertedButton } from './button.styles';
 
 export const BUTTON_TYPE_CLASSES = {
-    base: 'base',
-    google: 'google-sign-in',
-    inverted: 'inverted',
-}; // this allows us to create a class name based on the type of button we want to render
+  base: 'base',
+  google: 'google-sign-in',
+  inverted: 'inverted',
+};
 
-const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => 
-    ({
-        [BUTTON_TYPE_CLASSES.base]: BaseButton,
-        [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,
-        [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
-    }[buttonType]);
+const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => {
+  const buttonMap = {
+    [BUTTON_TYPE_CLASSES.base]: BaseButton,
+    [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,
+    [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
+  };
 
-const Button = ({children, buttonType, ...otherProps}) => {
-    const CustomButton = getButton(buttonType);
+  return buttonMap[buttonType] || BaseButton;
+}; // buttonMap object is created separately within the function, making it more readable and easier to debug
+//  adding || BaseButton ensures that if the buttonType is not found in buttonMap, it defaults to BaseButton.
 
-    return 
-        <CustomButton 
-        {...otherProps}
-        >
-        {children} 
-        </CustomButton>
+const Button = ({ children, buttonType, ...otherProps }) => {
+  const CustomButton = getButton(buttonType);
+
+  return <CustomButton {...otherProps}>{children}</CustomButton>;
 };
 
 export default Button;
-
-
-/*
-Buttons: 
-1. Default
-2. Inverted 
-3. Google Sign In
-*/

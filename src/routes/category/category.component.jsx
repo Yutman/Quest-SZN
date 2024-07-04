@@ -5,7 +5,7 @@ import ProductCard from '../../components/product-card/product-card.component';
 
 import { CategoriesContext } from '../../contexts/categories.context';
 
-import './category.styles.scss';
+import { CategoryContainer, Title } from './category.styles';
 
 const Category = () => {
   const { category } = useParams();
@@ -18,13 +18,13 @@ const Category = () => {
 
   return (
     <Fragment>
-      <h2 className='category-title'>{category.toUpperCase()}</h2>
-      <div className='category-container'>
+      <Title>{category.toUpperCase()}</Title>
+      <CategoryContainer>
         {products && // if products is undefined, it will not render the ProductCard components.
           products.map((product) => (
             <ProductCard key={product.id} product={product} /> // If products exist, it maps over the array and renders a ProductCard for each product, passing the product details as props.
           ))}
-      </div>
+      </CategoryContainer>
     </Fragment>
   );
 };

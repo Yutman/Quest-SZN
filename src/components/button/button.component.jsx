@@ -30,6 +30,8 @@ const Button = ({children, buttonType, ...otherProps}) => {
 };
 
 export default Button;
+
+
 /*
 Buttons: 
 1. Default

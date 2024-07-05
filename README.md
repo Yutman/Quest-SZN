@@ -25,27 +25,27 @@ They’ll be able to adjust quantities, remove items, and proceed to checkout se
 User authentication and data storage are managed using Firebase, ensuring a smooth and secure shopping experience.
 
 ### Learning objectives
-1.To understand concepts and principles of e-commerce platforms such as product categories, carts and checkout processes.
-2.Gain proficiency in using React Router for implementing navigation and routing within the application.
-3.Learn how to manage state in a React application, including storing and updating data related to shopping cart items and user interactions.
-4.To gain hands-on experience integrating Stripe API into a web application
-5.To learn how to set up authentication using Firebase Authentication, allowing users to sign up, sign in, and securely access protected routes.
-6.To understand the process of integrating frontend React components with backend services such as Firebase.
-7.To develop skills in testing and debugging a React application, ensuring the functionality of features such as navigation, shopping cart management, and payment processing.
-8.To learn how to deploy a React application to a web hosting service such as Firebase Hosting, making the e-commerce platform accessible to users online and gaining experience in managing web deployments.
+- To understand concepts and principles of e-commerce platforms such as product categories, carts and checkout processes.
+- Gain proficiency in using React Router for implementing navigation and routing within the application.
+- Learn how to manage state in a React application, including storing and updating data related to shopping cart items and user interactions.
+- To gain hands-on experience integrating Stripe API into a web application
+- To learn how to set up authentication using Firebase Authentication, allowing users to sign up, sign in, and securely access protected routes.
+- To understand the process of integrating frontend React components with backend services such as Firebase.
+- To develop skills in testing and debugging a React application, ensuring the functionality of features such as navigation, shopping cart management, and payment processing.
+- To learn how to deploy a React application to a web hosting service such as Firebase Hosting, making the e-commerce platform accessible to users online and gaining experience in managing web deployments.
 
 ### Technologies used
-HTML/CSS - For structuring the layout and styling the user interface.
-JavaScript - For adding interactivity to my application, handling user events, and manipulating data.
-Firebase Authentication - For user authentication, allowing users to sign up, sign in, and securely access protected routes.
-React - React would be a suitable library for building the frontend due to the app’s dynamic UI components.
-React Router - To implement navigation and routing between different categories of items in the e-commerce platform.
-Fetch API - For making HTTP requests to interact with external APIs, such as the Stripe API for payment processing.
-Book - Learning JavaScript Design Patterns by Addy Osmani
+- HTML/CSS - For structuring the layout and styling the user interface.
+- JavaScript - For adding interactivity to my application, handling user events, and manipulating data.
+- Firebase Authentication - For user authentication, allowing users to sign up, sign in, and securely access protected routes.
+- React - React would be a suitable library for building the frontend due to the app’s dynamic UI components.
+- React Router - To implement navigation and routing between different categories of items in the e-commerce platform.
+- Fetch API - For making HTTP requests to interact with external APIs, such as the Stripe API for payment processing.
+- Book - Learning JavaScript Design Patterns by Addy Osmani
 .
 ### Third-party services
-Stripe API - Stripe's test mode to integrate payment processing functionality, allowing users to handle payments securely.
-Google Analytics - For analytics and tracking user behavior on your website, providing insights into user engagement, conversion rates, and traffic sources.
+- Stripe API - Stripe's test mode to integrate payment processing functionality, allowing users to handle payments securely.
+- Google Analytics - For analytics and tracking user behavior on your website, providing insights into user engagement, conversion rates, and traffic sources.
 
 ### Challenge Statement
 To establish an online presence for Quest SZN physical shop to tap into the growing e-commerce market. 
@@ -53,14 +53,14 @@ Rising adoption of multifunctional devices in various industries such as educati
 Furthermore, increasing internet penetration, rising disposable income of consumers, and availability of low-cost laptops have boosted demand.
 
 ### Schedule of work
-Intro + Setup
-Routing + React-Router
-Authentication + Firebase
-React Context For State Management
-Observer Pattern
-Firebase Database Storage
-CSS-In-JS + Styled-Components
-Deploying With Netlify
+- Intro + Setup
+- Routing + React-Router
+- Authentication + Firebase
+- React Context For State Management
+- Observer Pattern
+- Firebase Database Storage
+- CSS-In-JS + Styled-Components
+- Deploying With Netlify
 
 ### Scaffolding the Project 
 Create React App
@@ -129,13 +129,13 @@ RxJS (Reactive Extensions for JavaScript) is a library for reactive programming 
 
 ### SASS vs. CSS:
 #### CSS: 
-Lacks native support for variables.
-Does not support nested rules.
-Does not support mixins.
+- Lacks native support for variables.
+- Does not support nested rules.
+- Does not support mixins.
 #### Sass: 
-Allows one to define variables, which makes it easy to manage and reuse values throughout stylesheets.
-Supports nesting of CSS rules, which helps keep the stylesheet organized and mirrors the HTML structure.
-Allows the creation of mixins, which are reusable chunks of code that can be included in other selectors
+- Allows one to define variables, which makes it easy to manage and reuse values throughout stylesheets.
+- Supports nesting of CSS rules, which helps keep the stylesheet organized and mirrors the HTML structure.
+- Allows the creation of mixins, which are reusable chunks of code that can be included in other selectors
 
 ### Add to Cart
 Whenever I add anything to the cart, I need to check whether it exists, and if it does then I can increase quantity but if it doesn’t I create a new cart item- the logic I have to tackle.
@@ -215,9 +215,9 @@ Hard-coded data requires code changes and redeployment to update. With a backend
 Keeping data separate from the codebase adheres to the principle of separation of concerns, making the codebase cleaner and more maintainable.
 
 ### Why should I use Firestore DB- No SQL?
-Firestore provides real-time data synchronization
-Firestore allows you to set up listeners on your data, which can trigger UI updates automatically when data changes.
-Firestore supports complex queries that are fast and efficient, even with large datasets.
+- Firestore provides real-time data synchronization
+- Firestore allows you to set up listeners on your data, which can trigger UI updates automatically when data changes.
+- Firestore supports complex queries that are fast and efficient, even with large datasets.
  
 Avoiding hard-coded data in the frontend and using a backend database like Firestore improves maintainability, scalability, and security of your application. 
 Firestore, with its real-time capabilities, flexible data model, and seamless integration with Firebase services, provides a robust solution for modern web and mobile applications.
@@ -243,7 +243,7 @@ Graph Databases: Store data in nodes and edges.
 How is it possible to upload categories from shop-data.js up to the respective collection in Firestore?
 shop-data.js contains the data structure of categories.
 firebase.utils.js file initializes Firebase and Firestore.
-1.Upload Script:
+- Upload Script:
 Import Firestore functions, methods and my shop data.
 			`import {
   				getFirestore,
@@ -291,9 +291,9 @@ batch.set(newDocRef, object): Adds a set operation to the batch. This operation 
 await batch.commit() - Commits the batch of operations to Firestore. This means all the set operations added to the batch will be executed in a single atomic transaction.
 return: Returns a promise that resolves once the batch commit is complete.
 
-2.Loop through each category in SHOP_DATA.		
-3.Create a document reference for each category in the Firestore collection (categories).
-4.Use setDoc to upload the category data to Firestore.
+- Loop through each category in SHOP_DATA.
+- Create a document reference for each category in the Firestore collection (categories).
+- Use setDoc to upload the category data to Firestore.
 
 There are two other methods I’ve imported: 
 ‘Query’ and ‘getDocs’
@@ -321,12 +321,12 @@ The function getCategoriesAndDocuments fetches all documents from the 'categorie
 
 Plugging in such helper functions in firebase.utils.js helps isolate the areas that our application interfaces with things that might change; in my particular case it’s 3rd party libraries. 
 Also it helps with: 
-Modularity - Each function is isolated in its specific context, making it easier to understand and maintain.
-Reusability - functions can be reused across different parts of your application
-Separation of concerns creating a cleaner codebase and react components can focus on rendering UI and handling user interactions
-Maintainability - Centralizing Firebase operations allows you to standardize error handling and logging mechanisms.
-Enhanced readability 
-Easier testing due to isolated functions
+- Modularity - Each function is isolated in its specific context, making it easier to understand and maintain.
+- Reusability - functions can be reused across different parts of your application
+- Separation of concerns creating a cleaner codebase and react components can focus on rendering UI and handling user interactions
+- Maintainability - Centralizing Firebase operations allows you to standardize error handling and logging mechanisms.
+- Enhanced readability
+- Easier testing due to isolated functions
 
 ### Utilizing my categoriesMap and Breaking out nested route of shop
 Inside the shop I have two different routes: 

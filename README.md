@@ -103,18 +103,22 @@ How to sync it up with my front-end app by creating sign-in and sign-up forms
 The onAuthStateChanged listener is designed to track changes in the authentication status of a user. 
 This includes events like logging in, logging out, session expiration, and other changes in the authentication token.
 onAuthStateChanged listener in my code snippet receives some kind of callback function. What it does is it passes this callback function as the second value of onAuthStateChanged;
+
 			`export const onAuthStateChangedListener = (callback) =>
   					onAuthStateChanged(auth, callback);` 
+       
 What onAuthStateChanged does is that it will call the callback  whenever the authentication state of my auth singleton changes. 
 So when a user signs in, that’s what is considered an auth change because a user has authenticated. 
 When a user signs out, that’s another change. So both times my callback is going to get invoked; whenever a user authenticates in and out.
 For this snippet here in my user.context.jsx;
+
 		`useEffect(() => {  
     const unsubscribe = onAuthStateChangedListener((user) => {
         		console.log(user);
     			})
     		return unsubscribe;
 }, []);`
+
 When my application initializes it will mount my user provider. My user provider is going to instantiate this first callback onMount and this will call onAuthStateChangedListener.
 getAuth ensures that there is a single, centralized instance of the authentication object in the application. 
 This is important for maintaining a consistent authentication state across different parts of the app. 

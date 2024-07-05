@@ -615,7 +615,8 @@ return (
       </div>
     </Fragment>
   );
-};```
+};
+```
 
 If I have components that rely on asynchronously fetched code, what are some of the safeguards that I can keep such that I can only render the component if the actual data is present? 
 
@@ -634,13 +635,15 @@ How do I do this? I targeted the category-preview component and changed this.
  ```js
 <span className='title'>
                         {title.toUpperCase()}
-                    </span>```
+                    </span>
+                    ```
 To this: 
 
 ```js
 <Link className='title' to={title}>
                         {title.toUpperCase()}
-                      </Link>```
+                      </Link>
+```
 
 
 ### Introducing Styled Components:
@@ -705,7 +708,8 @@ For styling buttons we can see a normal scss file like such: 
          border: none; 
     } 
    } 
- }```
+ }
+ ```
 
 ... in this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in. Since these buttons inherit styles from the parent, I'll have a base button when I change it to styled components.
 
@@ -722,7 +726,8 @@ export const BUTTON_TYPE_CLASSES = {
     base: 'base',
     google: 'google-sign-in',
     inverted: 'inverted',
-};```
+};
+```
 
 It defines three types of buttons, with key value pairs that allow me to specify different button styles easily across my application.
 
@@ -735,7 +740,8 @@ const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => (
         [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,
         [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
     }[buttonType]
-);```
+);
+```
 
 `buttonType = BUTTON_TYPE_CLASSES.base`: If no button type is provided, it defaults to the base type.
 

@@ -170,7 +170,8 @@ onAuthStateChanged listener in my code snippet receives some kind of callback fu
 
 ```js
 export const onAuthStateChangedListener = (callback) =>
-  onAuthStateChanged(auth, callback);``` 
+  onAuthStateChanged(auth, callback);
+``` 
 
 What onAuthStateChanged does is that it will call the callback  whenever the authentication state of my auth singleton changes. 
 
@@ -186,7 +187,8 @@ useEffect(() => {  
         console.log(user);
     })
     return unsubscribe;
-}, []);```
+}, []);
+```
 
 When my application initializes it will mount my user provider. My user provider is going to instantiate this first callback onMount and this will call onAuthStateChangedListener.
 
@@ -237,7 +239,8 @@ Put the component in the cart-dropdown where it will live. 
 I need to map over some kind of array, and for every item we map through, we want to pass this to the cart-item.
 
 ```js
-{[].map(item=> <CartItem cartItem={item}/>)}```
+{[].map(item=> <CartItem cartItem={item}/>)}
+```
 
 The array has to hold a variation of the products(size, shape and styling) but with the quantity on it.
 

@@ -72,6 +72,7 @@ Adding SASS - Make it able for app to load Sass files ‘npm add sass’
 ### React Fragment 
 Special component provided by React that lets you group multiple elements without adding extra nodes to the DOM.
 They are beneficial for keeping HTML structure clean, maintaining better CSS styling, ensuring semantic HTML, and potentially improving performance. 
+
 Adding SVG as a logo:
 SVG is a vector format, meaning it uses mathematical expressions to define shapes, lines, and colors. 
 This allows SVG images to scale up or down without losing any quality. Whether you display the logo on a small mobile screen or a large monitor, it will always remain crisp and clear.

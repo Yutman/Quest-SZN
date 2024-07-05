@@ -14,8 +14,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-## Name: Quest SZN
-### Team
+# Name: Quest SZN
+## Team
 Solo: Peter Muchiri Kuria
 
 ### Description of the Project: 
@@ -128,11 +128,11 @@ This can be achieved through libraries like RxJS(Reactive Extensions for JavaScr
 RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
 
 ### SASS vs. CSS:
-## CSS: 
+#### CSS: 
 Lacks native support for variables.
 Does not support nested rules.
 Does not support mixins.
-## Sass: 
+#### Sass: 
 Allows one to define variables, which makes it easy to manage and reuse values throughout stylesheets.
 Supports nesting of CSS rules, which helps keep the stylesheet organized and mirrors the HTML structure.
 Allows the creation of mixins, which are reusable chunks of code that can be included in other selectors
@@ -500,9 +500,8 @@ The function uses an object to map each buttonType to its corresponding button c
 `BUTTON_TYPE_CLASSES.base` maps to BaseButton.
 This approach allows me to maintain a clear, scalable, and maintainable button management system in my React application, enhancing both developer experience and code quality.
 
-I finished by deploying on Netlify.
-
-
+I finished by deploying on Netlify:
+https://quest-szn.netlify.app/
 
 
 

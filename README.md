@@ -436,7 +436,8 @@ collection(db, collectionKey): This gets a reference to the collection in Firest
 objectsToAdd.forEach((object) => {
   const newDocRef = doc(collectionRef);
   batch.set(newDocRef, object);
-});```
+});
+```
 
     Explanation for the above:
 

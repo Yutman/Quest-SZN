@@ -166,7 +166,7 @@ The onAuthStateChanged listener is designed to track changes in the authenticati
 
 This includes events like logging in, logging out, session expiration, and other changes in the authentication token.
 
-onAuthStateChanged listener in my code snippet receives some kind of callback function. What it does is it passes this callback function as the second value of onAuthStateChanged:
+onAuthStateChanged listener in my code snippet receives some kind of callback function. What it does is it passes this callback function as the second value of onAuthStateChanged
 
 ```js
 export const onAuthStateChangedListener = (callback) =>
@@ -179,7 +179,7 @@ So when a user signs in, that's what is considered an auth change because a user
 
 When a user signs out, that's another change. So both times my callback is going to get invoked; whenever a user authenticates in and out.
 
-For this snippet here in my user.context.jsx:
+For this snippet here in my user.context.jsx 
 
 ```js
 useEffect(() => {  

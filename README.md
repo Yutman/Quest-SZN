@@ -166,12 +166,12 @@ The onAuthStateChanged listener is designed to track changes in the authenticati
 
 This includes events like logging in, logging out, session expiration, and other changes in the authentication token.
 
-onAuthStateChanged listener in my code snippet receives some kind of callback function. What it does is it passes this callback function as the second value of onAuthStateChanged:
+onAuthStateChanged listener in my code snippet receives some kind of callback function. What it does is it passes this callback function as the second value of onAuthStateChanged.
 
 ```js
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
-
+```
 
 What onAuthStateChanged does is that it will call the callback  whenever the authentication state of my auth singleton changes. 
 
@@ -179,7 +179,7 @@ So when a user signs in, that's what is considered an auth change because a user
 
 When a user signs out, that's another change. So both times my callback is going to get invoked; whenever a user authenticates in and out.
 
-For this snippet here in my user.context.jsx 
+For this snippet here in my user.context.jsx.
 
 ```js
 useEffect(() => {  
@@ -412,7 +412,7 @@ The writeBatch method in Firestore allows me to group multiple write operations 
 
 This batch is then committed atomically, meaning that all writes succeed or fail together.
 
-Here is the code snippet added to firebase.utils.js and an explanation of how it works:
+Here is the code snippet added to firebase.utils.js and an explanation of how it works.
 
 ```js
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
@@ -483,7 +483,8 @@ export const getCategoriesAndDocuments = async () => {
         return acc;
     }, {});
     return categoryMap;
-}```
+}
+```
 
 The function getCategoriesAndDocuments fetches all documents from the 'categories' collection in Firestore, processes these documents into a JavaScript object where each category title is a key and its items are the value, and returns this object. This makes it easy to access category items by their titles.
 
@@ -538,7 +539,7 @@ Why is it that I have a span inside the h2? 
 
 Remember the h2 becomes clickable, it becomes a nav link. I want to make sure it is clickable on the text, not the h2.
 
-Here is my return statement and an explanation: 
+Here is my return statement and an explanation.
 
 ```js
 return (
@@ -559,7 +560,7 @@ return (
             </div>
         );```
 
-Explanation: 
+Explanation.
 
 ```products.filter((_, idx) => idx < 4):``` 
 
@@ -625,7 +626,7 @@ Since it has caused a clashing style I should rename the component to DirectoryI
 
 I also had to make the 'Hats' 'Jackets' etc clickable to take me to different routes containing each. 
 
-How do I do this? I targeted the category-preview component and changed this:
+How do I do this? I targeted the category-preview component and changed this.
 
  ```js
 <span className='title'>

@@ -517,7 +517,7 @@ The category-preview is going to live at the shop component level. 
 
 Inside the shop component I used categoryMap to generate a preview for each of the different categories. 
 
-  ```js
+```js
 import './category-preview.styles.scss'
 const CategoryPreview = ({title, products}) => {
         return(
@@ -532,6 +532,7 @@ const CategoryPreview = ({title, products}) => {
 }
 export default CategoryPreview;
 ```
+
 The h2 is there to display the title. Within the h2 I've included a span where I'm going to have the title. 
 
 Why is it that I have a span inside the h2? 
@@ -557,7 +558,8 @@ return (
                    ))} 
                 </div>
             </div>
-        );```
+        );
+```
 
 Explanation.
 
@@ -585,14 +587,16 @@ CategoriesContext provides the categories and their corresponding products.
 const Category = () => {
   const { category } = useParams();
   const { categoriesMap } = useContext(CategoriesContext);
-  const [products, setProducts] = useState(categoriesMap[category]);```
+  const [products, setProducts] = useState(categoriesMap[category]);
+```
   
 useContext retrieves the categoriesMap from CategoriesContext. This map contains the categories and their associated products.
 
   ```js
 useEffect(() => {
     setProducts(categoriesMap[category]);
-   }, [category, categoriesMap]);```
+   }, [category, categoriesMap]);
+   ```
 
 Use effect updates the products state whenever the category or categoriesMap changes. 
 

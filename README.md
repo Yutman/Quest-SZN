@@ -290,14 +290,14 @@ To navigate from my cart dropdown to the checkout page using the "Go To Checkout
 
 Why did I create multiple event handlers instead of plugging them in my return function? 
 
-   ```js
+```js
    const handleRemoveItemClick = () => {
             removeItemFromCart(cartItem);
         }; // remove item from cart
         const handleAddItemClick = () => {
             addItemToCart(cartItem);
         } // add item to cart
-        ```
+```
 
 By creating separate functions for each event handler, I keep my logic modular and easier to understand. 
 

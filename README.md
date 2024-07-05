@@ -168,7 +168,8 @@ This includes events like logging in, logging out, session expiration, and other
 
 onAuthStateChanged listener in my code snippet receives some kind of callback function. What it does is it passes this callback function as the second value of onAuthStateChanged;
 
-```export const onAuthStateChangedListener = (callback) =>
+```js
+export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);``` 
 
 What onAuthStateChanged does is that it will call the callback  whenever the authentication state of my auth singleton changes. 

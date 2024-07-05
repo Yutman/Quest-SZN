@@ -592,11 +592,11 @@ const Category = () => {
   
 useContext retrieves the categoriesMap from CategoriesContext. This map contains the categories and their associated products.
 
-  ```js
+```js
 useEffect(() => {
     setProducts(categoriesMap[category]);
    }, [category, categoriesMap]);
-   ```
+```
 
 Use effect updates the products state whenever the category or categoriesMap changes. 
 
@@ -604,7 +604,7 @@ This ensures that the component displays the correct products when the category 
 
 The fragment acts as a wrapper without adding extra nodes to the DOM.
 
-  ```js
+```js
 return (
     <Fragment>
         <h2 className='category-title'>{category.toUpperCase()}</h2>
@@ -636,7 +636,7 @@ How do I do this? I targeted the category-preview component and changed this.
 <span className='title'>
                         {title.toUpperCase()}
                     </span>
-                    ```
+```
 To this: 
 
 ```js

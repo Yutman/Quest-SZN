@@ -241,20 +241,23 @@ The array has to hold a variation of the products(size, shape and styling) but w
 
 Head to cart-context where everything about cart is stored. So we could store cart items in our cart as they are added.
 
-`// find if cartItems contains productToAdd
+```js
+// find if cartItems contains productToAdd
 const existingCartItem = cartItems.find(
-        cartItem => cartItem.id === productToAdd.id
-    );
-    // if found, increment quantity
+    cartItem => cartItem.id === productToAdd.id
+);
+
+// if found, increment quantity
 if (existingCartItem) {
-        return cartItems.map(cartItem => 
-            cartItem.id === productToAdd.id
-            ? {...cartItem, quantity: cartItem.quantity + 1}
-              : cartItem
-        );
-    //return new array with modified cartItems
-return [...cartItems, {...productToAdd, quantity: 1}];
-   }`
+    return cartItems.map(cartItem =>
+        cartItem.id === productToAdd.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+    );
+}
+
+// return new array with modified cartItems
+return [...cartItems, { ...productToAdd, quantity: 1 }];
 
 The count inside of my cart icon by accumulating all the quantities inside of the cart context and then utilizing it.
 

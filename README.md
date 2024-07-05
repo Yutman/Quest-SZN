@@ -170,7 +170,6 @@ This includes events like logging in, logging out, session expiration, and other
 onAuthStateChanged listener in my code snippet receives some kind of callback function. What it does is it passes this callback function as the second value of onAuthStateChanged;
 
 `export const onAuthStateChangedListener = (callback) =>
-
   onAuthStateChanged(auth, callback);` 
 
 What onAuthStateChanged does is that it will call the callback  whenever the authentication state of my auth singleton changes. 
@@ -182,15 +181,10 @@ When a user signs out, that's another change. So both times my callback is going
 For this snippet here in my user.context.jsx;
 
 `useEffect(() => {  
-
     const unsubscribe = onAuthStateChangedListener((user) => {
-
         console.log(user);
-
     })
-
     return unsubscribe;
-
 }, []);`
 
 When my application initializes it will mount my user provider. My user provider is going to instantiate this first callback onMount and this will call onAuthStateChangedListener.
@@ -247,32 +241,19 @@ The array has to hold a variation of the products(size, shape and styling) but w
 
 Head to cart-context where everything about cart is stored. So we could store cart items in our cart as they are added.
 
-`// find if cartItems contains productToAdd -
-
+`// find if cartItems contains productToAdd
 const existingCartItem = cartItems.find(
-
         cartItem => cartItem.id === productToAdd.id
-
     );
-
     // if found, increment quantity
-
 if (existingCartItem) {
-
         return cartItems.map(cartItem => 
-
             cartItem.id === productToAdd.id
-
             ? {...cartItem, quantity: cartItem.quantity + 1}
-
               : cartItem
-
         );
-
     //return new array with modified cartItems
-
 return [...cartItems, {...productToAdd, quantity: 1}];
-
    }`
 
 The count inside of my cart icon by accumulating all the quantities inside of the cart context and then utilizing it.
@@ -304,15 +285,10 @@ To navigate from my cart dropdown to the checkout page using the "Go To Checkout
 Why did I create multiple event handlers instead of plugging them in my return function? 
 
    `const handleRemoveItemClick = () => {
-
             removeItemFromCart(cartItem);
-
         }; // remove item from cart
-
         const handleAddItemClick = () => {
-
             addItemToCart(cartItem);
-
         } // add item to cart`
 
 By creating separate functions for each event handler, I keep my logic modular and easier to understand. 
@@ -328,21 +304,13 @@ Cart.context - Make a new value of 'total' which will be equal to zero which wil
 It's the same as count but I'm just changing the value of the total price by accumulating it, rather than the quantity.
 
 `const [cartTotal, setCartTotal] = useState(0);
-
  useEffect(() => {
-
     const newCartTotal = cartItems.reduce(
-
       (total, cartItem) => total + cartItem.quantity * cartItem.price,
-
       0
-
     );
-
     setCartTotal(newCartTotal);
-
   }, [cartItems]);
-
 `
 
 Why didn't I put two effects(total and count) into the same useEffect? 
@@ -418,21 +386,13 @@ firebase.utils.js file initializes Firebase and Firestore.
 Import Firestore functions, methods and my shop data.
 
 `import {
-
   getFirestore,
-
   doc,
-
   getDoc,
-
   setDoc,
-
-   collection,
-
+  collection,
 writeBatch
-
 } from 'firebase/firestore';
-
 `
 
 The writeBatch method in Firestore allows me to group multiple write operations into a single batch. 
@@ -442,21 +402,13 @@ This batch is then committed atomically, meaning that all writes succeed or fail
 Here is the code snippet added to firebase.utils.js and an explanation of how it works:
 
 `export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
-
   const collectionRef = collection(db, collectionKey);
-
   const batch = writeBatch(db);
-
   objectsToAdd.forEach((object) => {
-
     const newDocRef = doc(collectionRef);
-
     batch.set(newDocRef, object);
-
   });
-
   return await batch.commit();
-
 `
 
 The async function 'addCollectionAndDocuments' takes two parameters 'collectionKey' and 'objectsToAdd';
@@ -469,12 +421,9 @@ The async function 'addCollectionAndDocuments' takes two parameters 'collectionK
 
 collection(db, collectionKey): This gets a reference to the collection in Firestore.
 
-objectsToAdd.forEach((object) => {
-
+`objectsToAdd.forEach((object) => {
   const newDocRef = doc(collectionRef);
-
   batch.set(newDocRef, object);
-
 });`
 
     Explanation for the above:
@@ -506,25 +455,15 @@ The query method is used to create a query object that can be used to retrieve d
 The getDocs method is used to execute a query and retrieve the documents that match the specified conditions. It returns a QuerySnapshot containing the documents.
 
 `export const getCategoriesAndDocuments = async () => {
-
     const collectionRef = collection(db, 'categories');
-
     const q = query(collectionRef);
-
     const querySnapshot = await getDocs(q); 
-
      const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-
         const {title, items} = docSnapshot.data();
-
         acc[title.toLowerCase()] = items;
-
         return acc;
-
     }, {});
-
     return categoryMap;
-
 }`
 
 The function getCategoriesAndDocuments fetches all documents from the 'categories' collection in Firestore, processes these documents into a JavaScript object where each category title is a key and its items are the value, and returns this object. This makes it easy to access category items by their titles.
@@ -560,33 +499,19 @@ The category-preview is going to live at the shop component level. 
 Inside the shop component I used categoryMap to generate a preview for each of the different categories. 
 
   `import './category-preview.styles.scss'
-
 const CategoryPreview = ({title, products}) => {
-
         return(
-
             <div className='category-preview-container'>
-
                 <h2>
-
                     <span>
-
                         {title.toUpperCase()}
-
                     </span>
-
                 </h2>
-
             </div>
-
         )
-
 }
-
 export default CategoryPreview;
-
 `
-
 The h2 is there to display the title. Within the h2 I've included a span where I'm going to have the title. 
 
 Why is it that I have a span inside the h2? 
@@ -596,37 +521,21 @@ Remember the h2 becomes clickable, it becomes a nav link. I want to make sure it
 Here is my return statement and an explanation: 
 
 `return (
-
             <div className='category-preview-container'>
-
                 <h2>
-
                     <span className='title'>
-
                         {title.toUpperCase()}
-
                     </span>
-
                 </h2> //This structure allows for targeted styling. You can style the span independently to change color, font weight, or any other CSS properties.
-
                 <div className='preview'>
-
                     {
-
                         products
-
                         .filter((_, idx) => idx < 4) 
-
                         .map ((product) => (
-
                         <ProductCard key={product.id} product={product}/>
-
                    ))} 
-
                 </div>
-
             </div>
-
         );`
 
 Explanation: 
@@ -652,19 +561,14 @@ ProductCard is a component used to display individual product details.
 CategoriesContext provides the categories and their corresponding products.
 
 `const Category = () => {
-
   const { category } = useParams();
-
   const { categoriesMap } = useContext(CategoriesContext);
-
   const [products, setProducts] = useState(categoriesMap[category]);`
-
+  
 useContext retrieves the categoriesMap from CategoriesContext. This map contains the categories and their associated products.
 
   `useEffect(() => {
-
     setProducts(categoriesMap[category]);
-
    }, [category, categoriesMap]);`
 
 Use effect updates the products state whenever the category or categoriesMap changes. 
@@ -674,25 +578,15 @@ This ensures that the component displays the correct products when the category 
 The fragment acts as a wrapper without adding extra nodes to the DOM.
 
   `return (
-
     <Fragment>
-
         <h2 className='category-title'>{category.toUpperCase()}</h2>
-
          <div className='category-container'>
-
         {products && products.map((product) => (
-
             <ProductCard key={product.id} product={product} /> 
-
  ))}
-
       </div>
-
     </Fragment>
-
   );
-
 };`
 
 If I have components that rely on asynchronously fetched code, what are some of the safeguards that I can keep such that I can only render the component if the actual data is present? 
@@ -710,20 +604,13 @@ I also had to make the 'Hats' 'Jackets' etc clickable to take me to different ro
 How do I do this? I targeted the category-preview component and changed this:
 
  `<span className='title'>
-
                         {title.toUpperCase()}
-
-                    </span>
-
+                    </span>`
 To this: 
 
-<Link className='title' to={title}>
-
+`<Link className='title' to={title}>
                         {title.toUpperCase()}
-
-                      </Link>
-
-`
+                      </Link>`
 
 ### Introducing Styled Components:
 
@@ -733,13 +620,13 @@ By using styled-components, I can write plain CSS in my JavaScript files, scoped
 
 Advantages:
 
-Eliminates name collisions
+- Eliminates name collisions
 
-Eliminates unintended style override
+- Eliminates unintended style override
 
-Organization and Cleanliness
+- Organization and Cleanliness
 
-Better developer experience with features like nesting and auto vendor prefixing
+- Better developer experience with features like nesting and auto vendor prefixing
 
 'npm install styled-components'
 
@@ -770,39 +657,22 @@ Styling over an existing component, by using brackets.
 For styling buttons we can see a normal scss file like such: 
 
  `.button-container { 
-
      &:hover { 
-
       }
-
      &.google-sign-in { 
-
      &:hover { 
-
     } 
-
  }
-
    &.inverted { 
-
          background-color: white; 
-
          color: black; 
-
          border: 1px solid black; 
-
      &:hover { 
-
          background-color: black; 
-
          color: white; 
-
          border: none; 
-
     } 
-
    } 
-
  }`
 
 ... in this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in. Since these buttons inherit styles from the parent, I'll have a base button when I change it to styled components.
@@ -816,13 +686,9 @@ I've extended the style from the BaseButton which is the parent.
 In my button component, I have the object BUTTON_TYPE_CLASSES; 
 
 `export const BUTTON_TYPE_CLASSES = {
-
     base: 'base',
-
     google: 'google-sign-in',
-
     inverted: 'inverted',
-
 };`
 
 It defines three types of buttons, with key value pairs that allow me to specify different button styles easily across my application.
@@ -830,17 +696,11 @@ It defines three types of buttons, with key value pairs that allow me to specify
 I've added this to my button component: 
 
 `const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => (
-
     {
-
         [BUTTON_TYPE_CLASSES.base]: BaseButton,
-
         [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,
-
         [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
-
     }[buttonType]
-
 );`
 
 `buttonType = BUTTON_TYPE_CLASSES.base`: If no button type is provided, it defaults to the base type.

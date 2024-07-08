@@ -637,7 +637,9 @@ How do I do this? I targeted the category-preview component and changed this.
                         {title.toUpperCase()}
                     </span>
 ```
+
 To this: 
+
 
 ```js
 <Link className='title' to={title}>

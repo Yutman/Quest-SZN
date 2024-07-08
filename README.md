@@ -685,7 +685,7 @@ Styling over an existing component, by using brackets.
 
      import {Link} from 'react-router-dom'
 
-For styling buttons we can see a normal scss file like such: 
+For styling buttons we can see a normal scss file like such
 
  ```js
 .button-container { 

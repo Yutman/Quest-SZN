@@ -632,20 +632,15 @@ I also had to make the 'Hats' 'Jackets' etc clickable to take me to different ro
 
 How do I do this? I targeted the category-preview component and changed this.
 
- ```js
 <span className='title'>
                         {title.toUpperCase()}
                     </span>
-```
 
 To this: 
 
-
-```js
 <Link className='title' to={title}>
                         {title.toUpperCase()}
                       </Link>
-```
 
 
 ### Introducing Styled Components:

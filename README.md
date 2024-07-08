@@ -706,13 +706,15 @@ For styling buttons we can see a normal scss file like such
     } 
    } 
  }
- ```
+```
 
-... in this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in. Since these buttons inherit styles from the parent, I'll have a base button when I change it to styled components.
+in this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in. Since these buttons inherit styles from the parent, I'll have a base button when I change it to styled components.
 
 For the:
 
-```export const GoogleSignInButton = styled(BaseButton)```
+```js
+export const GoogleSignInButton = styled(BaseButton)
+```
 
 I've extended the style from the BaseButton which is the parent.
 

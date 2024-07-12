@@ -1,10 +1,10 @@
 import {useContext} from 'react';
 
 import {CartContext} from '../../contexts/cart.context';
-
 import CheckOutItem from '../../components/checkout-item/checkout-item.component';
-
 import {CheckoutContainer, CheckoutHeader, HeaderBlock} from './checkout.styles.jsx';
+
+import PaymentForm from '../../components/payment-form/payment-form.component.jsx';
 
 import './checkout.styles.jsx';
 
@@ -38,6 +38,7 @@ const Checkout = () => {
                     <CheckOutItem key={cartItem.id} cartItem={cartItem} />
                 ))}
                 <span className='total'>Total: Ksh.{total}.00</span>
+                <PaymentForm/>
             </CheckoutContainer>
     );
 };

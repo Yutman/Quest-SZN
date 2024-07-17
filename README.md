@@ -687,7 +687,7 @@ Styling over an existing component, by using brackets.
 
 For styling buttons we can see a normal scss file like such
 
- ```js
+ ```css
 .button-container { 
      &:hover { 
       }
@@ -703,6 +703,7 @@ For styling buttons we can see a normal scss file like such
          background-color: black; 
          color: white; 
          border: none; 
+         }
 ```
 
 In this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in.

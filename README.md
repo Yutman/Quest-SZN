@@ -779,11 +779,15 @@ I'll use Stripe in test mode.
 
 There are two keys; a publishable key and a secret key.
 
-`npm install @stripe/stripe-js`
+```
+npm install @stripe/stripe-js
+```
 
 This is the js library that allows us to make payments
 
-`npm install @stripe/react-stripe-js`
+```
+npm install @stripe/react-stripe-js
+```
 
 This is the react library that gives us React elements and bindings to interact with js environment
 
@@ -832,7 +836,9 @@ It can be used to deploy sites, manage functions, and configure site settings wi
 Netlify works with functions as if they are endpoints.
 
 I ran:
-`npm install -g netlify-cli`
+```
+npm install -g netlify-cli
+```
 
 Netlify works with functions as if they are API endpoints.
 

@@ -818,11 +818,11 @@ const paymentIntent = await stripe.paymentIntents.create({ ... });:
 
 This line creates a new Payment Intent using the Stripe API. The create method is called with an object containing:
 
-amount: The amount to be charged, obtained from the request body.
+- amount: The amount to be charged, obtained from the request body.
 
-currency: The currency in which the amount is specified. Here, it is set to 'ksh' (Kenyan Shilling).
+- currency: The currency in which the amount is specified. Here, it is set to 'ksh' (Kenyan Shilling).
 
-payment_method_types: An array specifying the types of payment methods allowed. Here, it is set to ['card'].
+- payment_method_types: An array specifying the types of payment methods allowed. Here, it is set to ['card'].
 
 ### Netlify CLI
 The Netlify CLI (Command Line Interface) is a tool that allows developers to interact with Netlify services directly from the command line.
@@ -836,7 +836,7 @@ I ran:
 
 Netlify works with functions as if they are API endpoints.
 
-- 4242 4242 4242 4242 - test card
+- 4242 4242 4242 4242 - test card number
 
 - any date in the future for the MM/YY
 

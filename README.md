@@ -704,6 +704,8 @@ For styling buttons we can see a normal scss file like such
          color: white; 
          border: none; 
          }
+      }
+    }
 ```
 
 In this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in.

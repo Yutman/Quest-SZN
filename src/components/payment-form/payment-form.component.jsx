@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-
+import {CartContext} from '../../contexts/cart.context';
 import { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import { PaymentFormContainer, FormContainer, PaymentButton } from './payment-form.styles.jsx';
 
 const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
+    const {cartTotal} = useContext(CartContext);
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
     const paymentHandler = async (e) => {
@@ -22,7 +23,7 @@ const PaymentForm = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ amount: 10000 }),
+            body: JSON.stringify({ amount: cartTotal * 100 }),
         }).then(res => res.json());
 
         const { paymentIntent: { client_secret } } = response;

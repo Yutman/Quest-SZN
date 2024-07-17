@@ -814,9 +814,14 @@ The dotenv package is used to handle environment variables securely.
 
 This allows us to store sensitive information like API keys outside of our codebase.
 
-const paymentIntent = await stripe.paymentIntents.create({ ... });: This line creates a new Payment Intent using the Stripe API. The create method is called with an object containing:
+const paymentIntent = await stripe.paymentIntents.create({ ... });: 
+
+This line creates a new Payment Intent using the Stripe API. The create method is called with an object containing:
+
 amount: The amount to be charged, obtained from the request body.
+
 currency: The currency in which the amount is specified. Here, it is set to 'ksh' (Kenyan Shilling).
+
 payment_method_types: An array specifying the types of payment methods allowed. Here, it is set to ['card'].
 
 ### Netlify CLI

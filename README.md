@@ -705,9 +705,9 @@ For styling buttons we can see a normal scss file like such
          border: none; 
 ```
 
-in this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in. Since these buttons inherit styles from the parent, I'll have a base button when I change it to styled components.
+In this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in.
 
-For the:
+Since these buttons inherit styles from the parent, I'll have a base button when I change it to styled components.
 
 ```js
 export const GoogleSignInButton = styled(BaseButton)
@@ -822,9 +822,11 @@ I ran:
 
 Netlify works with functions as if they are API endpoints.
 
-4242 4242 4242 4242 - test card
-any date in the future for the MM/YY
-For the CVC any figure will do.
+- 4242 4242 4242 4242 - test card
+
+- any date in the future for the MM/YY
+
+- For the CVC any figure will do.
 
 When we now click we get a successful payment alert and I can confirm it in my stripe website dashboard on 'developer'.
 

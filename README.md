@@ -687,26 +687,32 @@ Styling over an existing component, by using brackets.
 
 For styling buttons we can see a normal scss file like such
 
- ```css
-.button-container { 
-     &:hover { 
-      }
-     &.google-sign-in { 
-     &:hover { 
-    } 
- }
-   &.inverted { 
-         background-color: white; 
-         color: black; 
-         border: 1px solid black; 
-     &:hover { 
-         background-color: black; 
-         color: white; 
-         border: none; 
-         }
-      }
+```css
+.button-container {
+  &:hover {
+    // styles for hover state
+  }
+
+  &.google-sign-in {
+    &:hover {
+      // styles for google sign-in hover state
     }
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+  }
+}
 ```
+
 
 In this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in.
 

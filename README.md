@@ -687,27 +687,36 @@ Styling over an existing component, by using brackets.
 
 For styling buttons we can see a normal scss file like such
 
- ```css
-.button-container { 
-     &:hover { 
-      }
-     &.google-sign-in { 
-     &:hover { 
-    } 
- }
-   &.inverted { 
-         background-color: white; 
-         color: black; 
-         border: 1px solid black; 
-     &:hover { 
-         background-color: black; 
-         color: white; 
-         border: none; 
+```css
+.button-container {
+  &:hover {
+    // styles for hover state
+  }
+
+  &.google-sign-in {
+    &:hover {
+      // styles for google sign-in hover state
+    }
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+  }
+}
 ```
 
-in this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in. Since these buttons inherit styles from the parent, I'll have a base button when I change it to styled components.
 
-For the:
+In this format we see major styling of the button on the button-container but different styling on classes inside such as google sign-in.
+
+Since these buttons inherit styles from the parent, I'll have a base button when I change it to styled components.
 
 ```js
 export const GoogleSignInButton = styled(BaseButton)
@@ -747,7 +756,101 @@ The function uses an object to map each buttonType to its corresponding button c
 
 This approach allows me to maintain a clear, scalable, and maintainable button management system in my React application, enhancing both developer experience and code quality.
 
-I finished by deploying on Netlify:
+### Serverless functions 
+These are a cloud computing execution model where the cloud provider dynamically manages the allocation and provisioning of servers.
+
+#### Key features include:
+Event-Driven Execution: Functions are triggered by events (HTTP requests, database changes, file uploads, etc.).
+
+Scalability: Automatically scales with the number of requests.
+
+Cost Efficiency: You only pay for the compute time you consume.
+
+Stateless: Each invocation of the function is independent of others
+
+### Popular Serverless Platforms
+Netlify Functions, AWS Lambda, Google Cloud Functions, Azure Functions, 
+
+Stripe is a technology company that builds economic infrastructure for the internet. 
+
+It offers payment processing software and APIs for e-commerce websites and mobile applications to handle online payments, manage subscriptions, and more.
+
+I'll use Stripe in test mode. 
+
+There are two keys; a publishable key and a secret key.
+
+```
+npm install @stripe/stripe-js
+```
+
+This is the js library that allows us to make payments
+
+```
+npm install @stripe/react-stripe-js
+```
+
+This is the react library that gives us React elements and bindings to interact with js environment
+
+The <Elements> component acts as a context provider for Stripe, making the Stripe object available to the rest of my application. 
+
+This ensures that I can use Stripe’s API methods in your components.
+
+### Setting up my PaymentForm
+I created a PaymentForm component and imported it to my checkout form component
+
+I created custom hooks useStripe and useElements
+
+When developing applications with Stripe, Payment Intents are crucial for handling complex payment flows, especially those that require multiple steps or actions, such as handling authentication or redirects for certain types of payment methods
+
+On the frontend, use Stripe.js and Elements to collect the customer's payment information securely.
+Example: 
+```js
+const stripe = Stripe('your_public_key');
+const elements = stripe.elements();
+const cardElement = elements.create('card');
+cardElement.mount('#card-element');
+```
+
+### How do I make a stripe payment intent with netlify function?
+Creating a Stripe Payment Intent using Netlify Functions involves setting up a serverless function that handles the creation of the Payment Intent on the server side.
+
+The dotenv package is used to handle environment variables securely.
+
+This allows us to store sensitive information like API keys outside of our codebase.
+
+const paymentIntent = await stripe.paymentIntents.create({ ... });: 
+
+This line creates a new Payment Intent using the Stripe API. The create method is called with an object containing:
+
+- amount: The amount to be charged, obtained from the request body.
+
+- currency: The currency in which the amount is specified. Here, it is set to 'ksh' (Kenyan Shilling).
+
+- payment_method_types: An array specifying the types of payment methods allowed. Here, it is set to ['card'].
+
+### Netlify CLI
+The Netlify CLI (Command Line Interface) is a tool that allows developers to interact with Netlify services directly from the command line.
+
+It can be used to deploy sites, manage functions, and configure site settings without needing to go through the Netlify web interface.
+
+Netlify works with functions as if they are endpoints.
+
+I ran:
+```
+npm install -g netlify-cli
+```
+
+Netlify works with functions as if they are API endpoints.
+
+- 4242 4242 4242 4242 - test card number
+
+- any date in the future for the MM/YY
+
+- For the CVC any figure will do.
+
+When we now click we get a successful payment alert and I can confirm it in my stripe website dashboard on 'developer'.
+
+I finished by deploying on Netlify and adding environment variables to it:
 
 https://quest-szn.netlify.app/
 

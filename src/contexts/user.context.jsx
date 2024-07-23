@@ -38,7 +38,7 @@ const userReducer = (state, action) => {
 
 const INITIAL_STATE = {
     currentUser: null,
-}
+};
 
 export const UserProvider = ({children}) => {
 const [{currentUser}, dispatch] = useReducer(userReducer, INITIAL_STATE);

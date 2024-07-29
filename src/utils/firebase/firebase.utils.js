@@ -69,13 +69,9 @@ export const getCategoriesAndDocuments = async () => {
     const q = query(collectionRef); //simple query that fetches all documents in the collection without any filters or sorting.
 
     const querySnapshot = await getDocs(q); //getDocs is the asynchronous ability to fetch those document snapshots from the collection reference
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-        const {title, items} = docSnapshot.data();
-        acc[title.toLowerCase()] = items;
-        return acc;
-    }, {});
-    return categoryMap;
-}
+    return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+
+};
 
 
 export const createUserDocumentFromAuth = async (

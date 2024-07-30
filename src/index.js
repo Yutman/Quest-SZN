@@ -8,7 +8,6 @@ import './index.scss';
 
 
 import reportWebVitals from './reportWebVitals';
-import { CartProvider } from './contexts/cart.context';
 import { Elements } from '@stripe/react-stripe-js';
 import {store} from './store/store';
 import { stripePromise } from './utils/stripe/stripe.utils';
@@ -18,11 +17,9 @@ root.render(
   <React.StrictMode>
       <Provider store={store}>
       <BrowserRouter>
-              <CartProvider>
                 <Elements stripe= {stripePromise}>
                     <App/>
                 </Elements>
-              </CartProvider>
       </BrowserRouter>
       </Provider>
   </React.StrictMode>

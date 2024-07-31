@@ -850,21 +850,22 @@ Netlify works with functions as if they are API endpoints.
 
 When we now click we get a successful payment alert and I can confirm it in my stripe website dashboard on 'developer'.
 
-Redux Overview
+### Redux Overview
 Redux is a JavaScript library for managing and centralizing application state. It is often used with React, but it can be used with any other JavaScript framework or library.
 
-Key Concepts
+### Key Concepts
 Store: The state of the entire application is stored in a single JavaScript object called the 'store'.
 Actions: The only way to change the state is to emit an action, an object that describes what happened.
 Reducers: Pure functions called reducers change the state of the tree. Reducers take the previous state and an action and return the next state.
 In Redux, instead of using useState to manage component-level state, state updates are handled through a combination of actions, reducers, and the store.
 
-Actions
+### Actions
 Actions have two values:
 
 type: A string that describes the action.
 payload: An optional value that can be anything.
-Reducers
+
+### Reducers
 Reducers are functions that always return a new state object. When writing reducers, it's best to set up the reducer first as it can get a little confusing:
 
 Example:
@@ -881,7 +882,7 @@ const cartReducer = (state, action) => {
   }
 };
 ```
-Enhancing Readability with Reducers
+### Enhancing Readability with Reducers
 Instead of writing separate logic for cartTotal and cartCount, create a generic function SET_CART_ITEMS to update the state with the payload:
 
 ```
@@ -915,7 +916,7 @@ const setIsCartOpen = (isOpen) => {
 };
 ```
 
-Avoiding Mistakes with Constants
+### Avoiding Mistakes with Constants
 Define constants for action types to ensure consistency:
 
 ```
@@ -937,11 +938,10 @@ switch (type) {
 }
 ```
 
-Using React-Redux
+### Using React-Redux
 Context API vs. Redux
 Accessibility: Redux wraps the entire application, unlike Context which can be specific to parts that need access.
-Flow of Data:
-In Context, components drive actions into the reducers, which then update the components.
+Flow of Data: In Context, components drive actions into the reducers, which then update the components.
 In Redux, reducers combine to form the Root Reducer, passing the entire state to all components. Components dispatch actions through a single dispatch.
 Installation
 To install Redux and React-Redux:
@@ -950,13 +950,13 @@ npm install redux react-redux
 ```
 Store all state in one place using Redux, avoiding the need to use Context API and Redux simultaneously.
 
-Store Setup
+### Store Setup
 Create a store folder to host Redux code. In store.js, manage state, receive actions, and dispatch them to reducers.
 
-Middleware
+### Middleware
 Middleware functions intercept and act on dispatched actions before they reach the reducer, allowing for logging, error handling, and other side effects.
 
-Logger Middleware Example
+### Logger Middleware Example
 Create a middleware folder with logger.js:
 ```
 export const loggerMiddleware = (store) => (next) => (action) => {
@@ -973,7 +973,7 @@ export const loggerMiddleware = (store) => (next) => (action) => {
   console.log('next state:', store.getState());
 };
 ```
-Memoization and Redux Persist
+### Memoization and Redux Persist
 Redux Persist is a tool that allows us to persist reducer values inside local storage. It is useful for maintaining state across sessions and browser refreshes.
 
 To install Redux Persist:
@@ -991,7 +991,7 @@ const persistConfig = {
   blacklist: ['user'], // Do not persist user data
 };
 ```
-Asynchronous Redux
+### Asynchronous Redux
 Handling asynchronous operations with Redux often involves middleware such as Redux Thunk or Redux Saga.
 
 Redux Thunk: Allows action creators to return a function that performs async operations.

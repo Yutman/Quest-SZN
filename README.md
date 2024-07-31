@@ -855,8 +855,11 @@ Redux is a JavaScript library for managing and centralizing application state. I
 
 ### Key Concepts
 Store: The state of the entire application is stored in a single JavaScript object called the 'store'.
+
 Actions: The only way to change the state is to emit an action, an object that describes what happened.
+
 Reducers: Pure functions called reducers change the state of the tree. Reducers take the previous state and an action and return the next state.
+
 In Redux, instead of using useState to manage component-level state, state updates are handled through a combination of actions, reducers, and the store.
 
 ### Actions
@@ -939,10 +942,14 @@ switch (type) {
 ```
 
 ### Using React-Redux
-Context API vs. Redux
+Context API vs. Redux:
+
 Accessibility: Redux wraps the entire application, unlike Context which can be specific to parts that need access.
+
 Flow of Data: In Context, components drive actions into the reducers, which then update the components.
+
 In Redux, reducers combine to form the Root Reducer, passing the entire state to all components. Components dispatch actions through a single dispatch.
+
 Installation
 To install Redux and React-Redux:
 ```
@@ -974,7 +981,9 @@ export const loggerMiddleware = (store) => (next) => (action) => {
 };
 ```
 ### Memoization and Redux Persist
-Redux Persist is a tool that allows us to persist reducer values inside local storage. It is useful for maintaining state across sessions and browser refreshes.
+Redux Persist is a tool that allows us to persist reducer values inside local storage. 
+
+It is useful for maintaining state across sessions and browser refreshes.
 
 To install Redux Persist:
 ```
@@ -995,7 +1004,9 @@ const persistConfig = {
 Handling asynchronous operations with Redux often involves middleware such as Redux Thunk or Redux Saga.
 
 Redux Thunk: Allows action creators to return a function that performs async operations.
+
 Redux Saga: Uses generator functions to handle side effects, suitable for complex async workflows.
+
 While not strictly necessary, asynchronous middleware simplifies handling async operations and side effects, and is recommended for applications beyond basic state management needs.
 
 I finished by deploying on Netlify and adding environment variables to it:

@@ -1007,7 +1007,9 @@ Redux Thunk: Allows action creators to return a function that performs async ope
 
 Redux Saga: Uses generator functions to handle side effects, suitable for complex async workflows.
 
-While not strictly necessary, asynchronous middleware simplifies handling async operations and side effects, and is recommended for applications beyond basic state management needs.
+While not strictly necessary, asynchronous middleware simplifies handling async operations and side effects, and is recommended for applications beyond basic state management needs. 
+
+I had the option of using Context API since my application is small, but I added Redux to gain some experience and learn a few things that can enhance the functionality and maintainability.
 
 I finished by deploying on Netlify and adding environment variables to it:
 

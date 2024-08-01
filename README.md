@@ -824,7 +824,7 @@ This line creates a new Payment Intent using the Stripe API. The create method i
 
 - amount: The amount to be charged, obtained from the request body.
 
-- currency: The currency in which the amount is specified. Here, it is set to 'ksh' (Kenyan Shilling).
+- currency: The currency in which the amount is specified. Here, it is set to 'usd' as per Stripe's available currencies.
 
 - payment_method_types: An array specifying the types of payment methods allowed. Here, it is set to ['card'].
 

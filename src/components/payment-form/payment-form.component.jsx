@@ -1,66 +1,74 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import {CartContext} from '../../contexts/cart.context';
+import { useSelector } from 'react-redux';
+
+import { selectCartTotal } from '../../store/cart/cart.selector';
+import { selectCurrentUser } from '../../store/user/user.selector';
+
+import { FormContainer } from './payment-form.styles';
 import { BUTTON_TYPE_CLASSES } from '../button/button.component';
-import { PaymentFormContainer, FormContainer, PaymentButton } from './payment-form.styles.jsx';
+
+import { PaymentButton, PaymentFormContainer } from './payment-form.styles';
 
 const PaymentForm = () => {
-    const stripe = useStripe();
-    const elements = useElements();
-    const {cartTotal} = useContext(CartContext);
-    const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+  const amount = useSelector(selectCartTotal);
+  const currentUser = useSelector(selectCurrentUser);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
-    const paymentHandler = async (e) => {
-        e.preventDefault();
+  const paymentHandler = async (e) => {
+    e.preventDefault();
+    if (!stripe || !elements) {
+      return;
+    }
+    setIsProcessingPayment(true);
+    const response = await fetch('/.netlify/functions/create-payment-intent', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ amount: amount * 100 }),
+    }).then((res) => {
+      return res.json();
+    });
 
-        if (!stripe || !elements) {
-            return;
-        };
-        setIsProcessingPayment(true);
+    const clientSecret = response.paymentIntent.client_secret;
 
-        const response = await fetch('/.netlify/functions/create-payment-intent', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ amount: cartTotal * 100 }),
-        }).then(res => res.json());
+    const paymentResult = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          name: currentUser ? currentUser.displayName : 'Peter Kuria',
+        },
+      },
+    });
 
-        const { paymentIntent: { client_secret } } = response;
+    setIsProcessingPayment(false);
 
+    if (paymentResult.error) {
+      alert(paymentResult.error.message);
+    } else {
+      if (paymentResult.paymentIntent.status === 'succeeded') {
+        alert('Payment Successful!');
+      }
+    }
+  };
 
-        const paymentResult = await stripe.confirmCardPayment(client_secret, {
-            payment_method: {
-                card: elements.getElement(CardElement),
-                billing_details: {
-                    name: 'Peter Kuria',
-                },
-            },
-        });
-
-        setIsProcessingPayment(false);
-
-        if (paymentResult.error) {
-            alert(paymentResult.error.message);
-        } else {
-            if (paymentResult.paymentIntent.status === 'succeeded') {
-                alert('Payment Successful');
-            }
-        }
-    };
-
-    return (
-        <PaymentFormContainer>
-            <FormContainer onSubmit={paymentHandler}>
-                <h2>Credit Card Payment: </h2>
-                <CardElement />
-                <PaymentButton 
-                isLoading={isProcessingPayment}
-                buttonType={BUTTON_TYPE_CLASSES}>Pay Now</PaymentButton>
-            </FormContainer>
-        </PaymentFormContainer>
-    );
+  return (
+    <PaymentFormContainer>
+      <FormContainer onSubmit={paymentHandler}>
+        <h2>Credit Card Payment:</h2>
+        <CardElement />
+        <PaymentButton
+          buttonType={BUTTON_TYPE_CLASSES.inverted}
+          isLoading={isProcessingPayment}
+        >
+          Pay Now
+        </PaymentButton>
+      </FormContainer>
+    </PaymentFormContainer>
+  );
 };
-
 export default PaymentForm;
 // This code snippet defines a PaymentForm component that uses the Stripe CardElement and Stripe API to process a payment.

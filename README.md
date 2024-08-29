@@ -69,9 +69,7 @@ User authentication and data storage are managed using Firebase, ensuring a smoo
 
 To establish an online presence for Quest SZN physical shop to tap into the growing e-commerce market. 
 
-Rising adoption of multifunctional devices in various industries such as education, automobile, manufacturing, medical and logistics industry and the growing trend of Bring Your Own Device are the major growth drivers for electronic devices such as phones and laptops. 
-
-Furthermore, increasing internet penetration, rising disposable income of consumers, and availability of low-cost laptops have boosted demand.
+Increasing internet penetration, rising disposable income of consumers, and availability of low-cost devices have boosted demand to shop online.
 
 ### Schedule of work
 

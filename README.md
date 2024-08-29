@@ -67,9 +67,7 @@ User authentication and data storage are managed using Firebase, ensuring a smoo
 
 ### Challenge Statement
 
-To establish an online presence for Quest SZN physical shop to tap into the growing e-commerce market. 
-
-Increasing internet penetration, rising disposable income of consumers, and availability of low-cost devices have boosted demand to shop online.
+To create a robust online shopping experience for Quest SZN with secure payment processing and real-time data synchronization ti tap into the growing e-commerce market.
 
 ### Schedule of work
 
